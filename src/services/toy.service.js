@@ -23,39 +23,40 @@ export const toyService = {
 _createToys()
 
 function query(filterBy = {}) {
-    if (!filterBy.txt) filterBy.txt = ''
-    if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
-    const regExp = new RegExp(filterBy.txt, 'i')
+    // if (!filterBy.txt) filterBy.txt = ''
+    // if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
+    // const regExp = new RegExp(filterBy.txt, 'i')
 
-    return storageService.query(STORAGE_KEY)
-        .then(toys => {
-            return toys.filter(toy =>
-                regExp.test(toy.name) &&
-                toy.price <= filterBy.maxPrice
-            )
-        })
+    // return storageService.query(STORAGE_KEY)
+    //     .then(toys => {
+    //         return toys.filter(toy =>
+    //             regExp.test(toy.name) &&
+    //             toy.price <= filterBy.maxPrice
+    //         )
+    //     })
 
-    // return httpService.get(BASE_URL, filterBy)
+
+    return httpService.get(BASE_URL, filterBy)
 }
 
 function getById(toyId) {
-    return storageService.get(STORAGE_KEY, toyId)
+    // return storageService.get(STORAGE_KEY, toyId)
 
-    // return httpService.get(BASE_URL + toyId)
+    return httpService.get(BASE_URL + toyId)
 }
 
 function remove(toyId) {
-    return storageService.remove(STORAGE_KEY, toyId)
-    // return httpService.delete(BASE_URL + toyId)
+    // return storageService.remove(STORAGE_KEY, toyId)
+    return httpService.delete(BASE_URL + toyId)
 }
 
 function save(toy) {
     if (toy._id) {
-        return storageService.put(STORAGE_KEY, toy)
-        // return httpService.put(BASE_URL, toy)
+        // return storageService.put(STORAGE_KEY, toy)
+        return httpService.put(BASE_URL, toy)
     } else {
-        return storageService.post(STORAGE_KEY, toy)
-        // return httpService.post(BASE_URL, toy)
+        // return storageService.post(STORAGE_KEY, toy)
+        return httpService.post(BASE_URL, toy)
     }
 }
 
@@ -74,7 +75,7 @@ function getEmptyToy() {
 
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '', labels: [] }
+    return { txt: '', maxPrice: '', labels: [], inStock: 'all', sortBy: 'createdAt' }
 }
 
 function _createToys() {

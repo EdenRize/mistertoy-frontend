@@ -29,36 +29,7 @@ export  function ToyIndex() {
             })
     }
 
-    function onAddToy() {
-        const toyToSave = toyService.getEmptyToy()
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                console.log('savedToy:', savedToy)
-                showSuccessMsgRedux(`Toy added (vendor: ${savedToy.vendor})`)
-            })
-            .catch(err => {
-                console.log('Cannot add toy', err)
-                showErrorMsgRedux('Cannot add toy')
-            })
-    }
-
-    // function onEditToy(toy) {
-    //     const price = +prompt('New price?')
-    //     const toyToSave = { ...toy, price }
-
-    //     saveToy(toyToSave)
-    //         .then((savedToy) => {
-    //             showSuccessMsgRedux(`Toy updated to price: $${savedToy.price}`)
-    //         })
-
-    //         .catch(err => {
-    //             console.log('Cannot update toy', err)
-    //             showErrorMsgRedux('Cannot update toy')
-    //         })
-    // }
-
     function onSetFilter(filterBy) {
-        console.log('filterBy:', filterBy)
         setFilterBy(filterBy)
     }
 

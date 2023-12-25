@@ -31,7 +31,7 @@ export function AppHeader() {
   return (
     <header className="main-layout full app-header ">
       <section className="header-container">
-        <h1>Toys App</h1>
+        <h1>Mister Toy</h1>
         <nav className="app-nav">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/toy">Toys</NavLink>

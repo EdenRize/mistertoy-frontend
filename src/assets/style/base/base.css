@@ -48,3 +48,15 @@ object {
 a.active {
   text-decoration: underline;
 }
+
+.clean-list {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.out-of-stock {
+  color: red;
+}

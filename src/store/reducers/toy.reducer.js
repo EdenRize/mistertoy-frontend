@@ -14,7 +14,7 @@ export const SET_FILTER_BY = 'SET_FILTER_BY'
 
 const initialState = {
     toys: [],
-    lastToys: [],
+    // lastToys: [],
     isLoading: false,
     filterBy: toyService.getDefaultFilter()
 }

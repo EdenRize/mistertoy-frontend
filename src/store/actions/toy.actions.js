@@ -19,6 +19,16 @@ export function loadToys() {
         })
 }
 
+export function loadToy(toyId) {
+    return toyService
+        .getById(toyId)
+        .then(toy => toy)
+        .catch((err) => {
+            console.log('err', err)
+            throw err
+        })
+}
+
 export function removeToyOptimistic(toyId) {
     store.dispatch({ type: REMOVE_TOY, toyId })
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })

@@ -7,6 +7,8 @@ import { AppHeader } from './cmps/AppHeader.jsx'
 import { store } from './store/store'
 import { HomePage } from './pages/HomePage'
 import { ToyIndex } from './pages/ToyIndex.jsx'
+import { ToyEdit } from './pages/ToyEdit.jsx'
+import { ToyDetails } from './pages/ToyDetails.jsx'
 
 export function App() {
 
@@ -19,8 +21,9 @@ export function App() {
                 <Routes>
                     <Route element={<HomePage />} path="/" />
                     <Route element={<ToyIndex />} path="/toy" />
-                    {/* <Route element={<AboutUs />} path="/about" />
-                    <Route element={<CarDetails />} path="/car/:carId" /> */}
+                    <Route path="/toy/edit/:toyId" element={<ToyEdit />} />
+                    <Route path="/toy/edit" element={<ToyEdit />} />
+                    <Route element={<ToyDetails />} path="/toy/:toyId" />
                 </Routes>
             </main>
             {/* <AppFooter /> */}

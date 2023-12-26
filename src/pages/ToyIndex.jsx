@@ -6,7 +6,7 @@ import { ToyFilter } from '../cmps/ToyFilter'
 import { ToyList } from '../cmps/ToyList'
 import { Link } from 'react-router-dom'
 
-export  function ToyIndex() {
+export function ToyIndex() {
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
@@ -17,7 +17,7 @@ export  function ToyIndex() {
                 showErrorMsgRedux('Cannot show toys')
             })
     }, [filterBy])
-    
+
     function onRemoveToy(toyId) {
         removeToyOptimistic(toyId)
             .then(() => {
@@ -33,10 +33,10 @@ export  function ToyIndex() {
         setFilterBy(filterBy)
     }
 
-  return (
-    <section className='main-layout toy-index'>
-        <h1>Toys</h1>
-        <main>
+    return (
+        <section className='main-layout toy-index'>
+            <h1>Toys</h1>
+            <main>
                 <Link to="/toy/edit"><button>Add Toy</button></Link>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 {!isLoading && <ToyList
@@ -45,6 +45,6 @@ export  function ToyIndex() {
                 />}
                 {isLoading && <div>Loading...</div>}
             </main>
-    </section>
-  )
+        </section>
+    )
 }

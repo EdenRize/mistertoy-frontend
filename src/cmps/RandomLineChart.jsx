@@ -9,7 +9,6 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-// import faker from 'faker';
 
 ChartJS.register(
     CategoryScale,
@@ -32,7 +31,7 @@ export function RandomLineChart() {
         startDate.setFullYear(startDate.getFullYear() - 1);
         const oneDay = 24 * 60 * 60 * 1000;
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 7; i++) {
             const randomNumber = 10 + Math.random() * range;
             const currentDate = new Date(startDate.getTime() + i * oneDay);
             const dateKey = currentDate.toISOString().split('T')[0];
@@ -62,8 +61,8 @@ export function RandomLineChart() {
             {
                 label: 'Dataset 1',
                 data: datas,
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: '#F4CE14',
+                backgroundColor: '#F4CE14',
             },
         ],
     }

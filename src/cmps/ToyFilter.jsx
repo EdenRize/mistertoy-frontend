@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
 import { useEffectUpdate } from "./customHooks/useEffectUpdate.js"
 import { toyService } from "../services/toy.service.js"
+import { Multiselect } from "./Multiselect.jsx"
 
 
 export function ToyFilter({ filterBy, onSetFilter }) {
-  const [isShowLabels, setIsShowLabels] = useState(false)
+  // const [isShowLabels, setIsShowLabels] = useState(false)
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
   onSetFilter = useRef(utilService.debounce(onSetFilter))
   const labels = toyService.getLabels()
@@ -35,14 +36,8 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
   }
 
-  function handelLabelSelect({ target }) {
-    let value = target.value
-    setFilterByToEdit((prevFilter) => {
-      const { labels } = prevFilter
-      const valueIdx = labels.findIndex(label => label === value)
-      valueIdx === -1 ? labels.push(value) : labels.splice(valueIdx, 1)
-      return { ...prevFilter, labels }
-    })
+  function handelLabelSelect(labels) {
+    setFilterByToEdit((prevFilter) => ({ ...prevFilter, labels }))
   }
 
 
@@ -105,13 +100,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
           </div>
         </fieldset>
 
-        <label htmlFor="labels">Choose labels:</label>
-        <div className="multiselect-container">
-          <button onClick={() => setIsShowLabels(prevShow => (!prevShow))}>{isShowLabels ? 'Hide' : 'Show'} labels</button>
-          {isShowLabels && <select onChange={handelLabelSelect} className="multi-select" name="labels" id="labels" value={filterByToEdit.labels || ''} multiple>
-            {labels.map(label => <option key={label} value={label}>{label}</option>)}
-          </select>}
-        </div>
+        <Multiselect label={'Choose labels:'} options={labels} onSelect={handelLabelSelect} />
 
       </form>
 

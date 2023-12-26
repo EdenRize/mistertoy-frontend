@@ -38,7 +38,7 @@ export function LabelsPricesChart({ toys }) {
         for (const label in priceMap) {
             if (priceMap.hasOwnProperty(label)) {
                 labelsArray.push(label);
-                pricesArray.push(parseFloat(priceMap[label]));
+                pricesArray.push(+priceMap[label]);
             }
         }
 

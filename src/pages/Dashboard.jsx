@@ -4,6 +4,7 @@ import { loadToys, setFilterBy } from '../store/actions/toy.actions.js'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { LabelsPricesChart } from '../cmps/LabelsPricesChart.jsx'
+import { LabelInventoryChart } from '../cmps/LabelInventoryChart.jsx'
 
 
 
@@ -26,7 +27,7 @@ export function Dashboard() {
         <section className="main-layout dashboard">
             <h1>Dashboard</h1>
             <LabelsPricesChart toys={toys} />
-
+            <LabelInventoryChart toys={toys} />
         </section>
     )
 }

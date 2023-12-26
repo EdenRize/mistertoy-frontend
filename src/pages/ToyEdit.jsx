@@ -5,12 +5,13 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { showErrorMsgRedux, showSuccessMsgRedux } from '../store/actions/app.actions.js'
+import { SwitchBtn } from '../cmps/SwitchBtn.jsx'
 
 export function ToyEdit() {
   const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
   const { toyId } = useParams()
   const navigate = useNavigate()
-  // const dispatch = useDispatch()
+  console.log('toyToEdit', toyToEdit)
 
   useEffect(() => {
     if (toyId) _loadToy()
@@ -28,7 +29,25 @@ export function ToyEdit() {
 
   function handleChange({ target }) {
     const field = target.name
-    const value = target.type === 'number' ? +target.value || '' : target.value
+    let value = target.value
+
+    switch (target.type) {
+      case 'number':
+      case 'range':
+        value = +value
+        break
+
+      case 'radio':
+        value = target.id
+        break
+
+      case 'checkbox':
+        value = target.checked
+        break
+
+      default:
+        break
+    }
     setToyToEdit((prevToy) => ({ ...prevToy, [field]: value }))
   }
 
@@ -58,6 +77,18 @@ export function ToyEdit() {
           name="name"
           id="txt"
         />
+
+        <label htmlFor="price">Toy Price:</label>
+        <input
+          onChange={handleChange}
+          value={toyToEdit.price}
+          type="number"
+          name="price"
+          id="price"
+          min={0}
+        />
+
+        <SwitchBtn btnName={'inStock'} isOn={toyToEdit.inStock} label={'In Stock'} onChange={handleChange} />
 
         <button>{toyToEdit._id ? 'Edit' : 'Add'} Toy</button>
       </form>

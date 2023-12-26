@@ -11,13 +11,17 @@ const axios = Axios.create({
 const BASE_URL = 'toy/'
 const STORAGE_KEY = 'toyDB'
 
+const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
+    'Outdoor', 'Battery Powered']
+
 export const toyService = {
     query,
     getById,
     save,
     remove,
     getEmptyToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getLabels
 }
 
 _createToys()
@@ -62,15 +66,16 @@ function save(toy) {
 
 
 function getEmptyToy() {
-    const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
-        'Outdoor', 'Battery Powered']
-
     return {
         name: 'New Toy',
         price: utilService.getRandomIntInclusive(15, 200),
         labels: labels.splice(utilService.getRandomIntInclusive(0, labels.length - 4), 3),
         inStock: true
     }
+}
+
+function getLabels() {
+    return [...labels]
 }
 
 

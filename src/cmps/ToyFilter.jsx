@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
 import { useEffectUpdate } from "./customHooks/useEffectUpdate.js"
+import { toyService } from "../services/toy.service.js"
 
 
 export function ToyFilter({ filterBy, onSetFilter }) {
   const [isShowLabels, setIsShowLabels] = useState(false)
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
   onSetFilter = useRef(utilService.debounce(onSetFilter))
+  const labels = toyService.getLabels()
 
   useEffectUpdate(() => {
     onSetFilter.current(filterByToEdit)
@@ -107,14 +109,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         <div className="multiselect-container">
           <button onClick={() => setIsShowLabels(prevShow => (!prevShow))}>{isShowLabels ? 'Hide' : 'Show'} labels</button>
           {isShowLabels && <select onChange={handelLabelSelect} className="multi-select" name="labels" id="labels" value={filterByToEdit.labels || ''} multiple>
-            <option value="On wheels">On wheels</option>
-            <option value="Box game">Box game</option>
-            <option value="Art">Art</option>
-            <option value="Baby">Baby</option>
-            <option value="Doll">Doll</option>
-            <option value="Puzzle">Puzzle</option>
-            <option value="Outdoor">Outdoor</option>
-            <option value="Battery Powered">Battery Powered</option>
+            {labels.map(label => <option key={label} value={label}>{label}</option>)}
           </select>}
         </div>
 

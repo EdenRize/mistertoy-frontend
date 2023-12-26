@@ -1,3 +1,4 @@
+import { object, string, number } from 'yup';
 import { toyService } from '../services/toy.service.js'
 import { loadToy, saveToy } from '../store/actions/toy.actions.js'
 
@@ -11,7 +12,10 @@ export function ToyEdit() {
   const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
   const { toyId } = useParams()
   const navigate = useNavigate()
-  console.log('toyToEdit', toyToEdit)
+  let toySchema = object({
+    name: string().required(),
+    price: number().required().positive(),
+  });
 
   useEffect(() => {
     if (toyId) _loadToy()
@@ -53,14 +57,23 @@ export function ToyEdit() {
 
   function onSaveToy(ev) {
     ev.preventDefault()
-    saveToy(toyToEdit)
-      .then(() => {
-        showSuccessMsgRedux('Toy has been saved!')
-        navigate('/toy')
-      })
+    toySchema.validate(toyToEdit).then(val => {
+      saveToy(toyToEdit)
+        .then(() => {
+          showSuccessMsgRedux('Toy has been saved!')
+          navigate('/toy')
+        })
+    })
       .catch((err) => {
-        console.log('Cannot add toy', err)
-        showErrorMsgRedux('Cannot add toy')
+        if (err.name === 'ValidationError') {
+          console.log('Validation failed:', err.errors[0]);
+
+          showErrorMsgRedux(err.errors[0])
+        } else {
+
+          console.log('Cannot add toy', err)
+          showErrorMsgRedux('Cannot add toy')
+        }
       })
   }
 
@@ -81,7 +94,7 @@ export function ToyEdit() {
         <label htmlFor="price">Toy Price:</label>
         <input
           onChange={handleChange}
-          value={toyToEdit.price}
+          value={toyToEdit.price || ''}
           type="number"
           name="price"
           id="price"

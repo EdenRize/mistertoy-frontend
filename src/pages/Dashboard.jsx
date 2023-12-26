@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { LabelsPricesChart } from '../cmps/LabelsPricesChart.jsx'
 import { LabelInventoryChart } from '../cmps/LabelInventoryChart.jsx'
+import { RandomLineChart } from '../cmps/RandomLineChart.jsx'
 
 
 
@@ -28,6 +29,7 @@ export function Dashboard() {
             <h1>Dashboard</h1>
             <LabelsPricesChart toys={toys} />
             <LabelInventoryChart toys={toys} />
+            <RandomLineChart />
         </section>
     )
 }

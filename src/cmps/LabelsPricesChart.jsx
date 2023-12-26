@@ -22,6 +22,7 @@ export function LabelsPricesChart({ toys }) {
 
         const result = {};
         for (const label in labelMap) {
+            console.log('label', label)
             if (labelMap.hasOwnProperty(label)) {
                 const averagePrice = labelMap[label].totalPrice / labelMap[label].count;
                 result[label] = +averagePrice.toFixed(2);

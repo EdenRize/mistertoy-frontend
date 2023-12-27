@@ -45,7 +45,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
 
   return (
-    <section className="toy-filter full main-layout">
+    <section className="toy-filter">
       <h2>Toys Filter</h2>
       <form onSubmit={ev => ev.preventDefault()}>
         <label htmlFor="name">Name:</label>

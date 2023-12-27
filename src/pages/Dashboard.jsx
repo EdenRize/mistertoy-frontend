@@ -25,7 +25,7 @@ export function Dashboard() {
 
 
     return (
-        <section className="main-layout dashboard">
+        <section className="dashboard">
             <h1>Dashboard</h1>
             <LabelsPricesChart toys={toys} />
             <LabelInventoryChart toys={toys} />

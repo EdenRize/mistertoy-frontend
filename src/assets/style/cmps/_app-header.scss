@@ -2,17 +2,17 @@
     background-color: var(--green);
     color: var(--yellow);
     padding-block: 1em;
-}
 
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-block-end: 10px;
-}
+    & .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-block-end: 10px;
+    }
 
-  
-.app-nav {
-    display: flex;
-    gap: 15px;
+
+    & .app-nav {
+        display: flex;
+        gap: 15px;
+    }
 }

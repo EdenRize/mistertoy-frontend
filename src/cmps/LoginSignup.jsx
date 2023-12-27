@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { login, signup } from '../store/actions/user.actions.js'
 import { LoginForm } from './LoginForm.jsx'
-import { showSuccessMsgRedux } from '../store/actions/app.actions.js'
+import { showErrorMsgRedux, showSuccessMsgRedux } from '../store/actions/app.actions.js'
 
 export function LoginSignup({ onSetUser }) {
 

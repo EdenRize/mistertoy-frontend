@@ -6,18 +6,18 @@
     right: 1em;
     color: var(--yellow);
     border-radius: 2px;
-}
 
-.user-msg.success {
-    color: var(--yellow);
-}
+    &.success {
+        color: var(--yellow);
+    }
 
-.user-msg.error {
-    color: red;
-}
+    &.error {
+        color: red;
+    }
 
-.user-msg button {
-    font-size: .5em;
-    float: right;
-    margin: .5em;
+    & button {
+        font-size: .5em;
+        float: right;
+        margin: .5em;
+    }
 }

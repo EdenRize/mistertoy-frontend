@@ -47,7 +47,9 @@ export function RandomLineChart() {
 
         for (const label in priceMap) {
             if (priceMap.hasOwnProperty(label)) {
-                labelsArray.push(label);
+                const year = new Date(label).getFullYear();
+
+                labelsArray.push(year);
                 datasArray.push(+priceMap[label]);
             }
         }

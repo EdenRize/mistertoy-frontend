@@ -27,8 +27,11 @@ export function Dashboard() {
     return (
         <section className="page dashboard">
             <h1>Dashboard</h1>
-            <LabelsPricesChart toys={toys} />
-            <LabelInventoryChart toys={toys} />
+            <div className="doughnuts-container">
+
+                <LabelsPricesChart toys={toys} />
+                <LabelInventoryChart toys={toys} />
+            </div>
             <RandomLineChart />
         </section>
     )

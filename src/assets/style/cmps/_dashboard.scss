@@ -1,0 +1,38 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & .doughnuts-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include for-mobile-layout {
+            flex-direction: column;
+        }
+
+
+        @include for-narrow-layout {
+            flex-direction: row;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include for-normal-layout {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+    }
+
+    & .random-line-chart {
+        width: 300px;
+
+        @include for-narrow-layout {
+            width: 400px;
+        }
+
+        @include for-normal-layout {
+            width: 500px;
+        }
+    }
+}

@@ -15,6 +15,19 @@ export function Multiselect({ options, label, onSelect }) {
     const ITEM_HEIGHT = 48
     const ITEM_PADDING_TOP = 8
     const MenuProps = {
+        sx: {
+            "&& .Mui-selected": {
+                backgroundColor: "#495E57",
+                color: '#F4CE14'
+            },
+            ".MuiMenuItem-root:hover": {
+                backgroundColor: '#495e57b0'
+            },
+            ".MuiMenuItem-root": {
+                transition: '0.2s'
+            }
+
+        },
         PaperProps: {
             style: {
                 maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
@@ -29,6 +42,7 @@ export function Multiselect({ options, label, onSelect }) {
                 personName.indexOf(name) === -1
                     ? theme.typography.fontWeightRegular
                     : theme.typography.fontWeightMedium,
+            // backgroundColor: personName.indexOf(name) !== -1 && 'lightgray'
         }
     }
 

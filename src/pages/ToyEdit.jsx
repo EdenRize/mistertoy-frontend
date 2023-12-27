@@ -78,7 +78,7 @@ export function ToyEdit() {
   }
 
   return (
-    <section className="toy-edit">
+    <section className="page toy-edit">
       <h1>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h1>
 
       <form onSubmit={onSaveToy}>

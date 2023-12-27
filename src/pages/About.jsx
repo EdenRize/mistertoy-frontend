@@ -12,7 +12,7 @@ export function About() {
     ]
 
     return (
-        <section className="about">
+        <section className="page about">
             <h1>About Us</h1>
             <GoogleMap pins={branches.map(branch => branch.loc)} initCenter={center} />
 

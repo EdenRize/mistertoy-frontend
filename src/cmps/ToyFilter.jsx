@@ -49,99 +49,99 @@ export function ToyFilter({ filterBy, onSetFilter }) {
       <legend>Toys Filter:</legend>
 
       <form onSubmit={ev => ev.preventDefault()}>
-        {/* <div className="inputs-container"> */}
+        <div className="inputs-container">
 
-        <div className="filter">
+          <div className="filter">
 
-          <label htmlFor="name">Name:</label>
-          <input type="text"
-            id="name"
-            name="txt"
-            placeholder="By name"
-            value={filterByToEdit.txt}
-            onChange={handleChange}
-          />
+            <label htmlFor="name">Name:</label>
+            <input type="text"
+              id="name"
+              name="txt"
+              placeholder="By name"
+              value={filterByToEdit.txt}
+              onChange={handleChange}
+            />
+          </div>
+          <Multiselect label={'Choose labels:'} options={labels} onSelect={handelLabelSelect} />
         </div>
 
-        <fieldset className='option-fieldset'>
-          <legend>Select Status:</legend>
+        <div className="fieldset-container">
 
-          <div className='option-container'>
-            <label htmlFor="all">All</label>
-            <input
-              type="radio"
-              id="all"
-              name="inStock"
-              checked={filterByToEdit.inStock === 'all'}
-              onChange={handleChange}
-            />
-          </div>
+          <fieldset className='option-fieldset'>
+            <legend>Select Status:</legend>
 
-          <div className='option-container'>
-            <label htmlFor="inStock">In Stock</label>
-            <input
-              type="radio"
-              id="inStock"
-              name="inStock"
-              checked={filterByToEdit.inStock === 'inStock'}
-              onChange={handleChange}
-            />
-          </div>
+            <div className='option-container'>
+              <label htmlFor="all">All</label>
+              <input
+                type="radio"
+                id="all"
+                name="inStock"
+                checked={filterByToEdit.inStock === 'all'}
+                onChange={handleChange}
+              />
+            </div>
 
-          <div className='option-container'>
-            <label htmlFor="outOfStock">Out of Stock</label>
-            <input
-              type="radio"
-              id="outOfStock"
-              name="inStock"
-              checked={filterByToEdit.inStock === 'outOfStock'}
-              onChange={handleChange}
-            />
-          </div>
-        </fieldset>
-        <Multiselect label={'Choose labels:'} options={labels} onSelect={handelLabelSelect} />
-        {/* </div> */}
+            <div className='option-container'>
+              <label htmlFor="inStock">In Stock</label>
+              <input
+                type="radio"
+                id="inStock"
+                name="inStock"
+                checked={filterByToEdit.inStock === 'inStock'}
+                onChange={handleChange}
+              />
+            </div>
 
-        {/* <div className="fieldset-container"> */}
+            <div className='option-container'>
+              <label htmlFor="outOfStock">Out of Stock</label>
+              <input
+                type="radio"
+                id="outOfStock"
+                name="inStock"
+                checked={filterByToEdit.inStock === 'outOfStock'}
+                onChange={handleChange}
+              />
+            </div>
+          </fieldset>
 
 
-        <fieldset className='option-fieldset'>
-          <legend>Select Sort By:</legend>
+          <fieldset className='option-fieldset'>
+            <legend>Select Sort By:</legend>
 
-          <div className='option-container'>
-            <label htmlFor="createdAt">Created At</label>
-            <input
-              type="radio"
-              id="createdAt"
-              name="sortBy"
-              checked={filterByToEdit.sortBy === 'createdAt'}
-              onChange={handleChange}
-            />
-          </div>
+            <div className='option-container'>
+              <label htmlFor="createdAt">Created At</label>
+              <input
+                type="radio"
+                id="createdAt"
+                name="sortBy"
+                checked={filterByToEdit.sortBy === 'createdAt'}
+                onChange={handleChange}
+              />
+            </div>
 
-          <div className='option-container'>
-            <label htmlFor="name">Name</label>
-            <input
-              type="radio"
-              id="name"
-              name="sortBy"
-              checked={filterByToEdit.sortBy === 'name'}
-              onChange={handleChange}
-            />
-          </div>
+            <div className='option-container'>
+              <label htmlFor="name">Name</label>
+              <input
+                type="radio"
+                id="name"
+                name="sortBy"
+                checked={filterByToEdit.sortBy === 'name'}
+                onChange={handleChange}
+              />
+            </div>
 
-          <div className='option-container'>
-            <label htmlFor="price">Price</label>
-            <input
-              type="radio"
-              id="price"
-              name="sortBy"
-              checked={filterByToEdit.sortBy === 'price'}
-              onChange={handleChange}
-            />
-          </div>
-        </fieldset>
-        {/* </div> */}
+            <div className='option-container'>
+              <label htmlFor="price">Price</label>
+              <input
+                type="radio"
+                id="price"
+                name="sortBy"
+                checked={filterByToEdit.sortBy === 'price'}
+                onChange={handleChange}
+              />
+            </div>
+          </fieldset>
+        </div>
 
       </form>
     </fieldset>

@@ -34,7 +34,7 @@ export function ToyIndex() {
     }
 
     return (
-        <section className='toy-index'>
+        <section className='page toy-index'>
             <main>
                 <h1>Toys</h1>
                 <Link to="/toy/edit"><button className='add-toy-btn'>Add Toy</button></Link>

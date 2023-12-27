@@ -1,7 +1,19 @@
+// LAYOUT
+$layoutPadding: 20px;
+
+// LAYOUT BREAKPOINTS
+$break-narrow: 700px;
+$break-normal: 1360px;
+$break-wide: 1920px;
+
+$padded-break-narrow: $break-narrow + $layoutPadding * 2;
+$padded-break-normal: $break-normal + $layoutPadding * 2;
+$padded-break-wide: $break-wide + $layoutPadding * 2;
+
 :root {
   --white: #F5F7F8;
   --yellow: #F4CE14;
   --green: #495E57;
   --grey: #45474B;
 
-} 
+}

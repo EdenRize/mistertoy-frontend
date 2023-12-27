@@ -7,6 +7,28 @@
         justify-items: center;
         gap: 10px;
 
+
+        @include for-mobile-layout {
+            grid-template-columns: repeat(1, 1fr);
+
+            & .fieldset-container {
+                display: flex;
+
+                &>* {
+                    margin-inline: 5px;
+                }
+            }
+        }
+
+
+        @include for-narrow-layout {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include for-normal-layout {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
         &>* {
             align-self: center;
         }

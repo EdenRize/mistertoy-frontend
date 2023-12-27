@@ -1,7 +1,7 @@
 .app-header {
     background-color: var(--green);
     color: var(--yellow);
-    padding-block: 1em;
+    padding: 1em;
 
     & .header-container {
         display: flex;
@@ -14,5 +14,49 @@
     & .app-nav {
         display: flex;
         gap: 15px;
+    }
+
+    & .user-section:not(& .user-section .login-page) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:has(.user-greet) {
+
+            justify-content: space-between;
+        }
+    }
+
+    a & .user-section .login-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        margin-block-end: 10px;
+
+        & .inputs-container {
+            display: flex;
+            margin-block-end: 10px;
+
+            & input {
+                width: 110px;
+                margin-inline: 10px;
+
+
+                @include for-narrow-layout {
+                    width: 200px;
+                }
+
+                @include for-normal-layout {
+
+                    width: 300px;
+                }
+
+            }
+        }
+    }
+
+    & .btns {
+        text-align: center;
     }
 }

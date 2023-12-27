@@ -29,7 +29,7 @@ export function AppHeader() {
   }
 
   return (
-    <header className="main-layout full app-header ">
+    <header className="full app-header ">
       <section className="header-container">
         <h1>Mister Toy</h1>
         <nav className="app-nav">
@@ -40,14 +40,14 @@ export function AppHeader() {
         </nav>
       </section>
       {user ? (
-        <section>
-          <span to={`/user/${user._id}`}>
+        <section className='user-section'>
+          <span className='user-greet' to={`/user/${user._id}`}>
             Hello {user.fullname}
           </span>
           <button onClick={onLogout}>Logout</button>
         </section>
       ) : (
-        <section>
+        <section className='user-section'>
           <LoginSignup onSetUser={onSetUser} />
         </section>
       )}

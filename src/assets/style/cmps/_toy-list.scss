@@ -12,6 +12,14 @@
         text-align: center;
         padding: 10px;
 
+        & p {
+            margin-block-end: 5px;
+
+            &:last-child {
+                margin-block-end: 15px;
+            }
+        }
+
         & .toy-btns-container {
             display: flex;
 

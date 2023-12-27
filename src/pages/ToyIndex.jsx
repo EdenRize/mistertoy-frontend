@@ -35,9 +35,9 @@ export function ToyIndex() {
 
     return (
         <section className='toy-index'>
-            <h1>Toys</h1>
             <main>
-                <Link to="/toy/edit"><button>Add Toy</button></Link>
+                <h1>Toys</h1>
+                <Link to="/toy/edit"><button className='add-toy-btn'>Add Toy</button></Link>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 {!isLoading && <ToyList
                     toys={toys}

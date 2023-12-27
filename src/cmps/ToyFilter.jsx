@@ -45,27 +45,28 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
 
   return (
-    <section className="toy-filter">
-      <h2>Toys Filter</h2>
+    <fieldset className="toy-filter">
+      <legend>Toys Filter:</legend>
+
       <form onSubmit={ev => ev.preventDefault()}>
-        <label htmlFor="name">Name:</label>
-        <input type="text"
-          id="name"
-          name="txt"
-          placeholder="By name"
-          value={filterByToEdit.txt}
-          onChange={handleChange}
-        />
+        {/* <div className="inputs-container"> */}
 
-        <label htmlFor="maxPrice">Max price:</label>
-        <Box sx={{ width: 200 }}>
-          <Slider id="maxPrice" defaultValue={100} aria-label="Default" valueLabelDisplay="auto" max={200} onChange={handleChange} name='maxPrice' />
-        </Box>
+        <div className="filter">
 
-        <fieldset>
+          <label htmlFor="name">Name:</label>
+          <input type="text"
+            id="name"
+            name="txt"
+            placeholder="By name"
+            value={filterByToEdit.txt}
+            onChange={handleChange}
+          />
+        </div>
+
+        <fieldset className='option-fieldset'>
           <legend>Select Status:</legend>
 
-          <div>
+          <div className='option-container'>
             <label htmlFor="all">All</label>
             <input
               type="radio"
@@ -76,7 +77,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             />
           </div>
 
-          <div>
+          <div className='option-container'>
             <label htmlFor="inStock">In Stock</label>
             <input
               type="radio"
@@ -87,7 +88,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             />
           </div>
 
-          <div>
+          <div className='option-container'>
             <label htmlFor="outOfStock">Out of Stock</label>
             <input
               type="radio"
@@ -98,51 +99,55 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             />
           </div>
         </fieldset>
-
         <Multiselect label={'Choose labels:'} options={labels} onSelect={handelLabelSelect} />
+        {/* </div> */}
+
+        {/* <div className="fieldset-container"> */}
+
+
+        <fieldset className='option-fieldset'>
+          <legend>Select Sort By:</legend>
+
+          <div className='option-container'>
+            <label htmlFor="createdAt">Created At</label>
+            <input
+              type="radio"
+              id="createdAt"
+              name="sortBy"
+              checked={filterByToEdit.sortBy === 'createdAt'}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className='option-container'>
+            <label htmlFor="name">Name</label>
+            <input
+              type="radio"
+              id="name"
+              name="sortBy"
+              checked={filterByToEdit.sortBy === 'name'}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className='option-container'>
+            <label htmlFor="price">Price</label>
+            <input
+              type="radio"
+              id="price"
+              name="sortBy"
+              checked={filterByToEdit.sortBy === 'price'}
+              onChange={handleChange}
+            />
+          </div>
+        </fieldset>
+        {/* </div> */}
 
       </form>
+    </fieldset>
 
-      <h2>Toys Sort</h2>
 
-      <fieldset>
-        <legend>Select Sort By:</legend>
 
-        <div>
-          <label htmlFor="createdAt">Created At</label>
-          <input
-            type="radio"
-            id="createdAt"
-            name="sortBy"
-            checked={filterByToEdit.sortBy === 'createdAt'}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            type="radio"
-            id="name"
-            name="sortBy"
-            checked={filterByToEdit.sortBy === 'name'}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="price">Price</label>
-          <input
-            type="radio"
-            id="price"
-            name="sortBy"
-            checked={filterByToEdit.sortBy === 'price'}
-            onChange={handleChange}
-          />
-        </div>
-      </fieldset>
-
-    </section>
   )
 }
 const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',

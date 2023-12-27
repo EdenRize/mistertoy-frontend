@@ -18,7 +18,7 @@ export function Multiselect({ options, label, onSelect }) {
         PaperProps: {
             style: {
                 maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-                width: 250,
+                width: 200,
             },
         },
     }
@@ -46,7 +46,7 @@ export function Multiselect({ options, label, onSelect }) {
 
     return (
         <div className='multiselect'>
-            <FormControl sx={{ m: 1, width: 300 }}>
+            <FormControl sx={{ m: 1, width: 200 }}>
                 <InputLabel id="demo-multiple-chip-label">{label}</InputLabel>
                 <Select
                     labelId="demo-multiple-chip-label"

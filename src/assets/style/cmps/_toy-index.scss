@@ -1,0 +1,12 @@
+.toy-index {
+    position: relative;
+
+    & h1 {
+        margin-block-end: 20px;
+    }
+
+    .add-toy-btn {
+        position: absolute;
+        top: 0;
+    }
+}

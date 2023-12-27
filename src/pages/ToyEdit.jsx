@@ -79,29 +79,39 @@ export function ToyEdit() {
 
   return (
     <section className="toy-edit">
-      <h2>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h2>
+      <h1>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h1>
 
       <form onSubmit={onSaveToy}>
-        <label htmlFor="txt">Toy Text:</label>
-        <input
-          onChange={handleChange}
-          value={toyToEdit.name}
-          type="text"
-          name="name"
-          id="txt"
-        />
+        <div className="field-container">
 
-        <label htmlFor="price">Toy Price:</label>
-        <input
-          onChange={handleChange}
-          value={toyToEdit.price || ''}
-          type="number"
-          name="price"
-          id="price"
-          min={0}
-        />
+          <label htmlFor="txt">Toy Text:</label>
+          <input
+            onChange={handleChange}
+            value={toyToEdit.name}
+            type="text"
+            name="name"
+            id="txt"
+          />
+        </div>
 
-        <SwitchBtn btnName={'inStock'} isOn={toyToEdit.inStock} label={'In Stock'} onChange={handleChange} />
+        <div className="field-container">
+
+          <label htmlFor="price">Toy Price:</label>
+          <input
+            onChange={handleChange}
+            value={toyToEdit.price || ''}
+            type="number"
+            name="price"
+            id="price"
+            min={0}
+          />
+        </div>
+
+        <div className="field-container">
+
+          <label>In Stock:</label>
+          <SwitchBtn btnName={'inStock'} isOn={toyToEdit.inStock} onChange={handleChange} />
+        </div>
 
         <button>{toyToEdit._id ? 'Edit' : 'Add'} Toy</button>
       </form>

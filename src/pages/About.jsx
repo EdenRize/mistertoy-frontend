@@ -9,7 +9,6 @@ export function About() {
         { name: 'Petah Tikva', loc: { lat: 32.09414243222364, lng: 34.887543400345095 } },
         { name: 'Herzliya', loc: { lat: 32.16240962845579, lng: 34.84291143971794 } },
         { name: 'Rosh Haayin', loc: { lat: 32.090070373143526, lng: 34.953461369095095 } },
-
     ]
 
     return (

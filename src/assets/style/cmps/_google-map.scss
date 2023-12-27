@@ -1,0 +1,11 @@
+.google-map {
+
+    height: 40vh;
+    width: 100%;
+
+    @include for-narrow-layout {}
+
+    @include for-normal-layout {
+        width: 60%;
+    }
+}

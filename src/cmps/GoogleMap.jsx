@@ -5,17 +5,18 @@ const AnyReactComponent = ({ text }) => <div style={{ fontSize: '20px', textAlig
 
 export function GoogleMap({ pins, initCenter }) {
     const [center, setCenter] = useState(initCenter)
-    const zoom = 11
+    const zoom = 10.5
 
     useEffect(() => { setCenter(initCenter) }, [initCenter])
 
 
     function handleClick({ lat, lng }) {
+        console.log('{ lat, lng }', { lat, lng })
         setCenter({ lat, lng })
     }
 
     return (
-        <div style={{ height: '50vh', width: '100%' }}>
+        <div className='google-map'>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: "AIzaSyC7slhrpbG9JzV8M5QCnZS7K2ALrniSKtQ" }}
                 center={center}

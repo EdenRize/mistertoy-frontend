@@ -69,7 +69,7 @@ function getEmptyToy() {
     return {
         name: 'New Toy',
         price: utilService.getRandomIntInclusive(15, 200),
-        labels: labels.splice(utilService.getRandomIntInclusive(0, labels.length - 4), 3),
+        labels: [...labels].splice(utilService.getRandomIntInclusive(0, labels.length - 4), 3),
         inStock: true,
         img: utilService.getRandomIntInclusive(1, 10)
     }

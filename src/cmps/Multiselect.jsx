@@ -20,6 +20,9 @@ export function Multiselect({ options, label, onSelect }) {
                 backgroundColor: "#495E57",
                 color: '#F4CE14'
             },
+            "&& .Mui-selected:hover": {
+                backgroundColor: '#495e57b0'
+            },
             ".MuiMenuItem-root:hover": {
                 backgroundColor: '#495e57b0'
             },

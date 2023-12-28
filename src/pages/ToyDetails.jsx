@@ -42,8 +42,9 @@ export function ToyDetails() {
                     return <li key={idx}>{label}</li>
                 })}
             </ul>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p>
+            <p className="toy-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p>
 
+            <img src={`../../src/assets/img/${toy.img}.svg`} className="toy-img" />
             <BackArrow onArrowClick={navToIndex} />
         </section>
     )

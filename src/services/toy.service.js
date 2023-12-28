@@ -70,7 +70,8 @@ function getEmptyToy() {
         name: 'New Toy',
         price: utilService.getRandomIntInclusive(15, 200),
         labels: labels.splice(utilService.getRandomIntInclusive(0, labels.length - 4), 3),
-        inStock: true
+        inStock: true,
+        img: utilService.getRandomIntInclusive(1, 10)
     }
 }
 
@@ -94,6 +95,7 @@ function _createToys() {
                 labels: ['Doll', 'Battery Powered', 'Baby'],
                 createdAt: 1631031801011,
                 inStock: false,
+                img: 8
             },
             {
                 _id: 't102',
@@ -102,6 +104,7 @@ function _createToys() {
                 labels: ['Puzzle', 'Outdoor'],
                 createdAt: 1631031801022,
                 inStock: true,
+                img: 10
             },
             {
                 _id: 't103',
@@ -110,22 +113,25 @@ function _createToys() {
                 labels: ['Box game', 'Battery Powered'],
                 createdAt: 1631031801033,
                 inStock: true,
+                img: 7
             },
             {
                 _id: 't104',
-                name: 'Board Game - Monopoly',
+                name: 'Rubber Duck',
                 price: 30,
                 labels: ['On wheels', 'Art'],
                 createdAt: 1631031801044,
                 inStock: false,
+                img: 3
             },
             {
                 _id: 't105',
-                name: 'Puzzle Set',
+                name: 'Talking Robot',
                 price: 20,
                 labels: ['Outdoor', 'Art'],
                 createdAt: 1631031801055,
                 inStock: true,
+                img: 9
             },
             {
                 _id: 't106',
@@ -134,14 +140,16 @@ function _createToys() {
                 labels: ['Puzzle', 'Doll'],
                 createdAt: 1631031801066,
                 inStock: true,
+                img: 4
             },
             {
                 _id: 't107',
-                name: 'Art Supplies Kit',
+                name: 'Toy Train',
                 price: 35,
                 labels: ['Doll', 'Battery Powered'],
                 createdAt: 1631031801077,
                 inStock: true,
+                img: 5
             }
         ]
 

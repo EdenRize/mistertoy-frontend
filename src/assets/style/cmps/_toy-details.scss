@@ -1,7 +1,30 @@
 .toy-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+
+
+    @include for-mobile-layout {
+        & h1 {
+            max-width: 270px;
+        }
+    }
 
     & .clean-list {
         margin-block-end: 30px;
+    }
+
+    & .toy-desc {
+        margin-block-end: 30px;
+    }
+
+    & .toy-img {
+        width: 150px;
+
+
+        @include for-narrow-layout {
+            width: 250px;
+        }
     }
 }

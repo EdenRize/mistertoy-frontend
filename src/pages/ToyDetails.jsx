@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { toyService } from "../services/toy.service.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 import { useNavigate, useParams } from "react-router-dom"
+import { BackArrow } from "../cmps/BackArrow.jsx"
 
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
@@ -21,8 +22,12 @@ export function ToyDetails() {
             .catch((err) => {
                 console.log('Had issues in toy details', err)
                 showErrorMsg('Cannot load toy')
-                navigate('/toy')
+                navToIndex()
             })
+    }
+
+    function navToIndex() {
+        navigate('/toy')
     }
 
     if (!toy) return <div>Loading...</div>
@@ -38,6 +43,8 @@ export function ToyDetails() {
                 })}
             </ul>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p>
+
+            <BackArrow onArrowClick={navToIndex} />
         </section>
     )
 }

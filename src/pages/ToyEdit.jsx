@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { showErrorMsgRedux, showSuccessMsgRedux } from '../store/actions/app.actions.js'
 import { SwitchBtn } from '../cmps/SwitchBtn.jsx'
+import { BackArrow } from '../cmps/BackArrow.jsx';
 
 export function ToyEdit() {
   const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
@@ -26,7 +27,7 @@ export function ToyEdit() {
       .then(setToyToEdit)
       .catch((err) => {
         console.log('Had issued in toy edit:', err)
-        navigate('/toy')
+        navToIndex()
         showErrorMsgRedux('Toy not found!')
       })
   }
@@ -61,7 +62,7 @@ export function ToyEdit() {
       saveToy(toyToEdit)
         .then(() => {
           showSuccessMsgRedux('Toy has been saved!')
-          navigate('/toy')
+          navToIndex()
         })
     })
       .catch((err) => {
@@ -75,6 +76,10 @@ export function ToyEdit() {
           showErrorMsgRedux('Cannot add toy')
         }
       })
+  }
+
+  function navToIndex() {
+    navigate('/toy')
   }
 
   return (
@@ -115,6 +120,8 @@ export function ToyEdit() {
 
         <button>{toyToEdit._id ? 'Edit' : 'Add'} Toy</button>
       </form>
+
+      <BackArrow onArrowClick={navToIndex} />
     </section>
   )
 }

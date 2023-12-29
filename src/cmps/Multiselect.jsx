@@ -45,7 +45,6 @@ export function Multiselect({ options, label, onSelect }) {
                 personName.indexOf(name) === -1
                     ? theme.typography.fontWeightRegular
                     : theme.typography.fontWeightMedium,
-            // backgroundColor: personName.indexOf(name) !== -1 && 'lightgray'
         }
     }
 
@@ -55,7 +54,6 @@ export function Multiselect({ options, label, onSelect }) {
         } = ev;
 
         setChosenOptions(
-            // On autofill we get a stringified value.
             typeof value === 'string' ? value.split(',') : value,
         )
         onSelect(value)

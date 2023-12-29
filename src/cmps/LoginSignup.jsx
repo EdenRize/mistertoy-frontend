@@ -11,18 +11,25 @@ export function LoginSignup({ onSetUser }) {
         isSignup ? _signup(credentials) : _login(credentials)
     }
 
-    function _login(credentials) {
-        login(credentials)
-            .then(onSetUser)
-            .then(() => { showSuccessMsgRedux('Logged in successfully') })
-            .catch((err) => { showErrorMsgRedux('Oops try again') })
+    async function _login(credentials) {
+        try {
+            const user = await login(credentials)
+            onSetUser(user)
+            showSuccessMsgRedux('Logged in successfully')
+        } catch (error) {
+            console.log('error', error)
+            showErrorMsgRedux('Oops try again')
+        }
     }
 
-    function _signup(credentials) {
-        signup(credentials)
-            .then(onSetUser)
-            .then(() => { showSuccessMsgRedux('Signed in successfully') })
-            .catch((err) => { showErrorMsgRedux('Oops try again') })
+    async function _signup(credentials) {
+        try {
+            const user = await signup(credentials)
+            onSetUser(user)
+            showSuccessMsgRedux('Signed in successfully')
+        } catch (err) {
+            showErrorMsgRedux('Oops try again')
+        }
     }
 
     return (

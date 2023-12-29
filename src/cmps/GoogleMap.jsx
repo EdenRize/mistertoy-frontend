@@ -11,7 +11,6 @@ export function GoogleMap({ pins, initCenter }) {
 
 
     function handleClick({ lat, lng }) {
-        console.log('{ lat, lng }', { lat, lng })
         setCenter({ lat, lng })
     }
 
@@ -35,5 +34,3 @@ export function GoogleMap({ pins, initCenter }) {
         </div>
     )
 }
-
-//AIzaSyC7slhrpbG9JzV8M5QCnZS7K2ALrniSKtQ

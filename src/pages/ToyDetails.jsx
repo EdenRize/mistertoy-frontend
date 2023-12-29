@@ -16,14 +16,15 @@ export function ToyDetails() {
         loadToy()
     }, [toyId])
 
-    function loadToy() {
-        toyService.getById(toyId)
-            .then((toy) => setToy(toy))
-            .catch((err) => {
-                console.log('Had issues in toy details', err)
-                showErrorMsg('Cannot load toy')
-                navToIndex()
-            })
+    async function loadToy() {
+        try {
+            const toy = await toyService.getById(toyId)
+            setToy(toy)
+        } catch (error) {
+            console.log('Had issues in toy details', error)
+            showErrorMsg('Cannot load toy')
+            navToIndex()
+        }
     }
 
     function navToIndex() {

@@ -1,6 +1,3 @@
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-
 import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
 import { useEffectUpdate } from "./customHooks/useEffectUpdate.js"
@@ -9,7 +6,6 @@ import { Multiselect } from "./Multiselect.jsx"
 
 
 export function ToyFilter({ filterBy, onSetFilter }) {
-  // const [isShowLabels, setIsShowLabels] = useState(false)
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
   onSetFilter = useRef(utilService.debounce(onSetFilter))
   const labels = toyService.getLabels()
@@ -53,9 +49,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
           <div className="filter">
 
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="byName">Name:</label>
             <input type="text"
-              id="name"
+              id="byName"
               name="txt"
               placeholder="By name"
               value={filterByToEdit.txt}

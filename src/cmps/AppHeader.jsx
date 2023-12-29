@@ -13,14 +13,14 @@ export function AppHeader() {
   const navigate = useNavigate()
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
 
-  function onLogout() {
-    logout()
-      .then(() => {
-        onSetUser(null)
-      })
-      .catch((err) => {
-        showErrorMsgRedux('Oops try again')
-      })
+  async function onLogout() {
+    try {
+      await logout()
+      onSetUser(null)
+    } catch (error) {
+      showErrorMsgRedux('Oops try again')
+
+    }
   }
 
   function onSetUser(user) {

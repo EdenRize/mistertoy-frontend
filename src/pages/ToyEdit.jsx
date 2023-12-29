@@ -22,14 +22,15 @@ export function ToyEdit() {
     if (toyId) _loadToy()
   }, [])
 
-  function _loadToy() {
-    loadToy(toyId)
-      .then(setToyToEdit)
-      .catch((err) => {
-        console.log('Had issued in toy edit:', err)
-        navToIndex()
-        showErrorMsgRedux('Toy not found!')
-      })
+  async function _loadToy() {
+    try {
+      const toy = await loadToy(toyId)
+      setToyToEdit(toy)
+    } catch (error) {
+      console.log('Had issued in toy edit:', error)
+      navToIndex()
+      showErrorMsgRedux('Toy not found!')
+    }
   }
 
   function handleChange({ target }) {
@@ -56,26 +57,25 @@ export function ToyEdit() {
     setToyToEdit((prevToy) => ({ ...prevToy, [field]: value }))
   }
 
-  function onSaveToy(ev) {
-    ev.preventDefault()
-    toySchema.validate(toyToEdit).then(val => {
-      saveToy(toyToEdit)
-        .then(() => {
-          showSuccessMsgRedux('Toy has been saved!')
-          navToIndex()
-        })
-    })
-      .catch((err) => {
-        if (err.name === 'ValidationError') {
-          console.log('Validation failed:', err.errors[0]);
+  async function onSaveToy(ev) {
+    try {
 
-          showErrorMsgRedux(err.errors[0])
-        } else {
+      ev.preventDefault()
+      await toySchema.validate(toyToEdit)
+      await saveToy(toyToEdit)
+      showSuccessMsgRedux('Toy has been saved!')
+      navToIndex()
 
-          console.log('Cannot add toy', err)
-          showErrorMsgRedux('Cannot add toy')
-        }
-      })
+    } catch (error) {
+      if (error.name === 'ValidationError') {
+        console.log('Validation failed:', error.errors[0]);
+        showErrorMsgRedux(error.errors[0])
+      } else {
+        console.log('Cannot add toy', error)
+        showErrorMsgRedux('Cannot add toy')
+      }
+
+    }
   }
 
   function navToIndex() {

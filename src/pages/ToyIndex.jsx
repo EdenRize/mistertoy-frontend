@@ -12,21 +12,25 @@ export function ToyIndex() {
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
 
     useEffect(() => {
-        loadToys()
-            .catch(() => {
+        const fetchData = async () => {
+            try {
+                await loadToys()
+            } catch (error) {
                 showErrorMsgRedux('Cannot show toys')
-            })
+            }
+        }
+
+        fetchData()
     }, [filterBy])
 
-    function onRemoveToy(toyId) {
-        removeToyOptimistic(toyId)
-            .then(() => {
-                showSuccessMsgRedux('Toy removed')
-            })
-            .catch(err => {
-                console.log('Cannot remove toy', err)
-                showErrorMsgRedux('Cannot remove toy')
-            })
+    async function onRemoveToy(toyId) {
+        try {
+            await removeToyOptimistic(toyId)
+            showSuccessMsgRedux('Toy removed')
+        } catch (err) {
+            console.error('Cannot remove toy', err)
+            showErrorMsgRedux('Cannot remove toy')
+        }
     }
 
     function onSetFilter(filterBy) {

@@ -18,40 +18,60 @@ function getById(userId) {
     return httpService.get(BASE_URL + userId)
 }
 
-function login({ username, password }) {
+async function login({ username, password }) {
+    try {
+        const user = await httpService.post(BASE_URL + 'login', { username, password })
 
-    return httpService.post(BASE_URL + 'login', { username, password })
-        .then(user => {
-            if (user) return _setLoggedinUser(user)
-            else return Promise.reject('Invalid login')
-        })
+        if (user) {
+            return _setLoggedinUser(user)
+        } else {
+            throw new Error('Invalid login')
+        }
+    } catch (error) {
+        return Promise.reject(error.message || 'An error occurred during login')
+    }
 }
 
-function signup({ username, password, fullname }) {
-    const user = { username, password, fullname, score: 10000 }
-    return httpService.post(BASE_URL + 'signup', user)
-        .then(user => {
-            if (user) return _setLoggedinUser(user)
-            else return Promise.reject('Invalid signup')
-        })
+async function signup({ username, password, fullname }) {
+    try {
+        const user = { username, password, fullname, score: 10000 }
+        const newUser = await httpService.post(BASE_URL + 'signup', user)
+
+        if (newUser) {
+            return _setLoggedinUser(newUser)
+        } else {
+            throw new Error('Invalid signup')
+        }
+    } catch (error) {
+        return Promise.reject(error.message || 'An error occurred during signup')
+    }
 }
 
 
 
-function updateScore(diff) {
-    if (getLoggedinUser().score + diff < 0) return Promise.reject('No credit')
-    return httpService.put('user/', { diff })
-        .then(user => {
+async function updateScore(diff) {
+    try {
+        if (getLoggedinUser().score + diff < 0) return Promise.reject('No credit')
+        const user = await httpService.put('user/', { diff })
+
+        if (user) {
             _setLoggedinUser(user)
             return user.score
-        })
+        } else {
+            throw new Error('Invalid user')
+        }
+    } catch (error) {
+        throw new Error(error.message || 'An error occurred during score update')
+    }
 }
 
-function logout() {
-    return httpService.post(BASE_URL + 'logout')
-        .then(() => {
-            sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN)
-        })
+async function logout() {
+    try {
+        await httpService.post(BASE_URL + 'logout')
+        sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN)
+    } catch (error) {
+        throw new Error(error.message || 'An error occurred during logout')
+    }
 }
 
 function getLoggedinUser() {

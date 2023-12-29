@@ -15,11 +15,16 @@ export function Dashboard() {
 
 
     useEffect(() => {
-        setFilterBy(toyService.getDefaultFilter())
-        loadToys()
-            .catch(() => {
+        const fetchData = async () => {
+            try {
+                setFilterBy(toyService.getDefaultFilter())
+                await loadToys()
+            } catch (error) {
                 showErrorMsgRedux('Cannot show toys')
-            })
+            }
+        }
+
+        fetchData()
     }, [])
 
 

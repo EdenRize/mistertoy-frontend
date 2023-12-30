@@ -16,7 +16,7 @@ export function ToyList({ toys, onRemoveToy }) {
               <Link to={`/toy/${toy._id}`}>
                 <button>Details</button>
               </Link>
-              {user &&
+              {(user && user.isAdmin) &&
                 <>
                   <Link to={`/toy/edit/${toy._id}`}>
                     <button>Edit</button>

@@ -13,12 +13,15 @@ export function ToyEdit() {
   const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
   const { toyId } = useParams()
   const navigate = useNavigate()
+  const user = useSelector((storeState) => storeState.userModule.loggedinUser)
+
   let toySchema = object({
     name: string().required(),
     price: number().required().positive(),
   });
 
   useEffect(() => {
+    if (!user.isAdmin) navToIndex()
     if (toyId) _loadToy()
   }, [])
 

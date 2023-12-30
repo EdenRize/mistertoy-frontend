@@ -1,5 +1,5 @@
 import { toyService } from "../../services/toy.service.js"
-import { ADD_TOY, TOY_UNDO, REMOVE_TOY, SET_TOYS, SET_FILTER_BY, SET_IS_LOADING, UPDATE_TOY } from "../reducers/toy.reducer.js"
+import { ADD_MSG, ADD_TOY, TOY_UNDO, REMOVE_TOY, SET_TOYS, SET_FILTER_BY, SET_IS_LOADING, UPDATE_TOY } from "../reducers/toy.reducer.js"
 import { store } from "../store.js"
 
 
@@ -69,6 +69,17 @@ export async function saveToy(toy) {
         const toyToSave = await toyService.save(toy)
         store.dispatch({ type, toy: toyToSave })
         return toyToSave
+    } catch (err) {
+        console.error('toy action -> Cannot save toy', err)
+        throw err
+    }
+}
+
+export async function addMsg(toyId, txt) {
+    try {
+        const savedMsg = await toyService.addToyMsg(toyId, txt)
+        // store.dispatch({ type: ADD_MSG, data: { toyId, msg: savedMsg } })
+        // return toyToSave
     } catch (err) {
         console.error('toy action -> Cannot save toy', err)
         throw err

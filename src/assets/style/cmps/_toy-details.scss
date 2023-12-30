@@ -21,10 +21,16 @@
 
     & .toy-img {
         width: 150px;
+        margin-block-end: 30px;
 
 
         @include for-narrow-layout {
             width: 250px;
         }
     }
+
+    & .msgs-table {
+        margin-block-end: 20px;
+    }
+
 }

@@ -12,6 +12,8 @@ export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 export const SET_FILTER_BY = 'SET_FILTER_BY'
 
+export const ADD_MSG = 'ADD_MSG'
+
 const initialState = {
     toys: [],
     // lastToys: [],
@@ -38,6 +40,7 @@ export function toyReducer(state = initialState, action = {}) {
             return { ...state, toys }
 
         case UPDATE_TOY:
+            console.log('state.toys', state.toys)
             toys = state.toys.map(toy => toy._id === action.toy._id ? action.toy : toy)
             return { ...state, toys }
 
@@ -51,6 +54,15 @@ export function toyReducer(state = initialState, action = {}) {
 
         case TOY_UNDO:
             toys = [...state.lastToys]
+            return { ...state, toys }
+
+        case ADD_MSG:
+            console.log('state.toys', state.toys)
+            var toy = state.toys.find(currToy => {
+                return currToy._id === action.data.toyId
+            })
+            toy = { ...toy, msgs: [action.data.msg, ...toy.msgs] }
+            toys = state.toys.map(currToy => currToy._id === action.data.toyId ? toy : currToy)
             return { ...state, toys }
 
         default:

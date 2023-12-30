@@ -18,7 +18,7 @@ export function ToyEdit() {
   let toySchema = object({
     name: string().required(),
     price: number().required().positive(),
-  });
+  })
 
   useEffect(() => {
     if (!user.isAdmin) navToIndex()

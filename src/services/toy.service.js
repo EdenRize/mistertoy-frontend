@@ -18,10 +18,11 @@ export const toyService = {
     query,
     getById,
     save,
+    addToyMsg,
     remove,
     getEmptyToy,
     getDefaultFilter,
-    getLabels
+    getLabels,
 }
 
 _createToys()
@@ -82,6 +83,15 @@ async function save(toy) {
     }
 }
 
+async function addToyMsg(toyId, txt) {
+    try {
+        return await httpService.post(`${BASE_URL}${toyId}/msg`, { txt })
+    } catch (error) {
+        throw new Error(error.message || 'An error occurred during adding msg')
+
+    }
+}
+
 
 function getEmptyToy() {
     return {
@@ -89,7 +99,8 @@ function getEmptyToy() {
         price: utilService.getRandomIntInclusive(15, 200),
         labels: [...labels].splice(utilService.getRandomIntInclusive(0, labels.length - 4), 3),
         inStock: true,
-        img: utilService.getRandomIntInclusive(1, 10)
+        img: utilService.getRandomIntInclusive(1, 10),
+        msgs: []
     }
 }
 

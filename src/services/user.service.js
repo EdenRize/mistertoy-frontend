@@ -14,8 +14,12 @@ export const userService = {
     getEmptyCredentials
 }
 
-function getById(userId) {
-    return httpService.get(BASE_URL + userId)
+async function getById(userId) {
+    try {
+        return await httpService.get(BASE_URL + userId)
+    } catch (error) {
+        return Promise.reject(error.message || 'An error occurred during getting user')
+    }
 }
 
 async function login({ username, password }) {
@@ -34,7 +38,7 @@ async function login({ username, password }) {
 
 async function signup({ username, password, fullname }) {
     try {
-        const user = { username, password, fullname, score: 10000 }
+        const user = { username, password, fullname, isAdmin: false }
         const newUser = await httpService.post(BASE_URL + 'signup', user)
 
         if (newUser) {

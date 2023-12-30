@@ -26,7 +26,7 @@ export const toyService = {
 
 _createToys()
 
-function query(filterBy = {}) {
+async function query(filterBy = {}) {
     // if (!filterBy.txt) filterBy.txt = ''
     // if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
     // const regExp = new RegExp(filterBy.txt, 'i')
@@ -38,29 +38,47 @@ function query(filterBy = {}) {
     //             toy.price <= filterBy.maxPrice
     //         )
     //     })
-
-
-    return httpService.get(BASE_URL, filterBy)
+    try {
+        return await httpService.get(BASE_URL, filterBy)
+    } catch (error) {
+        throw new Error(error.message || 'An error occurred during getting toys')
+    }
 }
 
-function getById(toyId) {
+async function getById(toyId) {
     // return storageService.get(STORAGE_KEY, toyId)
+    try {
+        return await httpService.get(BASE_URL + toyId)
+    } catch (error) {
+        throw new Error(error.message || 'An error occurred during getting toy')
 
-    return httpService.get(BASE_URL + toyId)
+    }
 }
 
-function remove(toyId) {
+async function remove(toyId) {
     // return storageService.remove(STORAGE_KEY, toyId)
-    return httpService.delete(BASE_URL + toyId)
+    try {
+        return await httpService.delete(BASE_URL + toyId)
+
+    } catch (error) {
+        throw new Error(error.message || 'An error occurred during removing toy')
+
+    }
 }
 
-function save(toy) {
-    if (toy._id) {
-        // return storageService.put(STORAGE_KEY, toy)
-        return httpService.put(BASE_URL, toy)
-    } else {
-        // return storageService.post(STORAGE_KEY, toy)
-        return httpService.post(BASE_URL, toy)
+async function save(toy) {
+    try {
+
+        if (toy._id) {
+            // return storageService.put(STORAGE_KEY, toy)
+            return await httpService.put(BASE_URL, toy)
+        } else {
+            // return storageService.post(STORAGE_KEY, toy)
+            return await httpService.post(BASE_URL, toy)
+        }
+    } catch (error) {
+
+        throw new Error(error.message || 'An error occurred during saving toy')
     }
 }
 

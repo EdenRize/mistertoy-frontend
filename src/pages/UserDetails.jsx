@@ -10,11 +10,14 @@ export function UserDetails() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        setReviewFilterBy({ userId: user._id, toyId: null })
+    }, [])
+
+    useEffect(() => {
         if (!user) {
             navigate('/')
             return
         }
-        setReviewFilterBy({ userId: user._id, toyId: null })
         loadReviews()
     }, [user])
 

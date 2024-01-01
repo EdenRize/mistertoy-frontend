@@ -15,7 +15,6 @@ export function ToyEdit() {
   const { toyId } = useParams()
   const navigate = useNavigate()
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
-  console.log('toyToEdit.img', toyToEdit.img)
 
   let toySchema = object({
     name: string().required(),

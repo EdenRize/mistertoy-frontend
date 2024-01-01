@@ -23,7 +23,7 @@ export function ToyDetails() {
 
     useEffect(() => {
         loadToy()
-        setReviewFilterBy({ toyId })
+        setReviewFilterBy({ toyId, userId: null })
         loadReviews()
     }, [toyId])
 
@@ -86,7 +86,7 @@ export function ToyDetails() {
             {user && <AddInput onSubmit={_addMsg} type={'Message'} />}
 
             <h3>Toy Reviews</h3>
-            <ReviewsTable reviews={reviews} />
+            <ReviewsTable reviews={reviews} fields={{ username: true }} />
 
             {user && <AddInput onSubmit={_addReview} type={'Review'} />}
             <BackArrow onArrowClick={navToIndex} />

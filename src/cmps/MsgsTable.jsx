@@ -3,7 +3,7 @@ export function MsgsTable({ msgs }) {
 
     if (!msgs.length) return <div>No messages yet</div>
     return (
-        <table className="msgs-table">
+        <table className="msgs-table general-table">
             <thead>
                 <tr>
                     <td>Username:</td>

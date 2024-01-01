@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { BackArrow } from "../cmps/BackArrow.jsx"
 import { MsgsTable } from "../cmps/MsgsTable.jsx"
 import { useSelector } from "react-redux"
-import { AddMsg } from "../cmps/AddMsg.jsx"
+import { AddInput } from "../cmps/AddInput.jsx"
 import { addMsg } from "../store/actions/toy.actions.js"
 
 export function ToyDetails() {
@@ -67,8 +67,11 @@ export function ToyDetails() {
             <h3>Users's messages</h3>
             <MsgsTable msgs={toy.msgs} />
 
-            {user && <AddMsg addMsg={_addMsg} />}
+            {user && <AddInput onSubmit={_addMsg} type={'Message'} />}
 
+            <h3>Toy Reviews</h3>
+
+            {/* {user && <AddInput onSubmit={_addMsg} type={'Review'} />} */}
             <BackArrow onArrowClick={navToIndex} />
         </section>
     )

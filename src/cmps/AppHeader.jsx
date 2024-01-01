@@ -33,12 +33,34 @@ export function AppHeader() {
       <section className="header-container">
         <h1>Mister Toy</h1>
         <nav className="app-nav">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/toy">Toys</NavLink>
-          <NavLink to="/dashboard">Dashboards</NavLink>
-          <NavLink to="/review">Reviews</NavLink>
-          {user && <NavLink to="/profile">Profile</NavLink>}
-          <NavLink to="/about">About</NavLink>
+
+          <div className="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul className="menu">
+              <li>
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/toy">Toys</NavLink>
+              </li>
+              <li>
+                <NavLink to="/review">Reviews</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard">Dashboards</NavLink>
+              </li>
+              {user && <li>
+                <NavLink to="/profile">Profile</NavLink>
+              </li>}
+              <li>
+                <NavLink to="/about">About</NavLink>
+              </li>
+            </ul>
+          </div>
         </nav>
       </section>
       {user ? (

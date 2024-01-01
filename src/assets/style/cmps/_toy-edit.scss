@@ -14,6 +14,24 @@
                 font-size: 18px;
                 margin-inline-end: 10px;
             }
+
+            &.add-img {
+                flex-direction: column;
+
+                & label {
+                    margin-block-end: 10px;
+                }
+
+                & input {
+                    margin-block-end: 10px;
+                }
+
+                & img {
+                    width: 150px;
+                    margin-block-end: 30px;
+                }
+            }
+
         }
     }
 }

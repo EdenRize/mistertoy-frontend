@@ -127,7 +127,7 @@ export function ToyEdit() {
           <SwitchBtn btnName={'inStock'} isOn={toyToEdit.inStock} onChange={handleChange} />
         </div>
 
-        <div className="field-container">
+        <div className="field-container add-img">
 
           <label>Toy Image:</label>
           <input type="file" onChange={onImgChange} />

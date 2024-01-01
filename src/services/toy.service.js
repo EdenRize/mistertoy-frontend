@@ -99,7 +99,7 @@ function getEmptyToy() {
         price: utilService.getRandomIntInclusive(15, 200),
         labels: [...labels].splice(utilService.getRandomIntInclusive(0, labels.length - 4), 3),
         inStock: true,
-        img: utilService.getRandomIntInclusive(1, 10),
+        img: `../../src/assets/img/${utilService.getRandomIntInclusive(1, 10)}.svg`,
         msgs: []
     }
 }

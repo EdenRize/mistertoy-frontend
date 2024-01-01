@@ -8,12 +8,14 @@ import { useEffect, useState } from 'react'
 import { showErrorMsgRedux, showSuccessMsgRedux } from '../store/actions/app.actions.js'
 import { SwitchBtn } from '../cmps/SwitchBtn.jsx'
 import { BackArrow } from '../cmps/BackArrow.jsx';
+import { uploadService } from '../services/upload.service.js';
 
 export function ToyEdit() {
   const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
   const { toyId } = useParams()
   const navigate = useNavigate()
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
+  console.log('toyToEdit.img', toyToEdit.img)
 
   let toySchema = object({
     name: string().required(),
@@ -85,6 +87,11 @@ export function ToyEdit() {
     navigate('/toy')
   }
 
+  async function onImgChange(ev) {
+    const img = await uploadService.uploadImg(ev)
+    setToyToEdit((prevToy) => ({ ...prevToy, img }))
+  }
+
   return (
     <section className="page toy-edit">
       <h1>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h1>
@@ -119,6 +126,13 @@ export function ToyEdit() {
 
           <label>In Stock:</label>
           <SwitchBtn btnName={'inStock'} isOn={toyToEdit.inStock} onChange={handleChange} />
+        </div>
+
+        <div className="field-container">
+
+          <label>Toy Image:</label>
+          <input type="file" onChange={onImgChange} />
+          {toyToEdit.img && <img src={toyToEdit.img} />}
         </div>
 
         <button>{toyToEdit._id ? 'Edit' : 'Add'} Toy</button>

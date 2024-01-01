@@ -13,7 +13,8 @@ export function getActionAddReview(review) {
 
 export async function loadReviews() {
   try {
-    const reviews = await reviewService.query()
+    const filterBy = store.getState().reviewModule.filterBy
+    const reviews = await reviewService.query(filterBy)
     store.dispatch({ type: SET_REVIEWS, reviews })
 
   } catch (err) {
@@ -24,8 +25,10 @@ export async function loadReviews() {
 
 export async function addReview(review) {
   try {
+    delete review.user._id
+    delete review.user.isAdmin
     const addedReview = await reviewService.add(review)
-    store.dispatch(getActionAddReview(addedReview))
+    store.dispatch(getActionAddReview({ ...addedReview, user: review.user }))
   } catch (err) {
     console.log('ReviewActions: err in addReview', err)
     throw err
@@ -42,6 +45,6 @@ export async function removeReview(reviewId) {
   }
 }
 
-export function setFilterBy(filterBy) {
+export function setReviewFilterBy(filterBy) {
   store.dispatch({ type: SET_REVIEW_FILTER_BY, filterBy })
 }

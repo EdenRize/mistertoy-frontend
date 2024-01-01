@@ -31,7 +31,7 @@ async function remove(reviewId) {
 async function add({ txt, toyId }) {
   const reviewToAdd = {
     txt,
-    userId: userService.getLoggedinUser(),
+    userId: userService.getLoggedinUser()._id,
     toyId
   }
 

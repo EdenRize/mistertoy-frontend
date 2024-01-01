@@ -1,5 +1,6 @@
 
 export function ReviewsTable({ reviews }) {
+    console.log('reviews', reviews)
     if (!reviews.length) return <div>No reviews yet</div>
     return (
         <table className="reviews-table general-table">
@@ -13,8 +14,8 @@ export function ReviewsTable({ reviews }) {
             <tbody>
                 {reviews.map(review => {
                     return <tr key={review._id}>
-                        <td>{review.byUser.fullname}</td>
-                        <td>{review.content}</td>
+                        <td>{review.user.fullname}</td>
+                        <td>{review.txt}</td>
                     </tr>
                 })}
             </tbody>

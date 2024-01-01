@@ -10,16 +10,21 @@ import { MsgsTable } from "../cmps/MsgsTable.jsx"
 import { useSelector } from "react-redux"
 import { AddInput } from "../cmps/AddInput.jsx"
 import { addMsg } from "../store/actions/toy.actions.js"
+import { addReview, loadReviews, setReviewFilterBy } from "../store/actions/review.actions.js"
+import { ReviewsTable } from "../cmps/ReviewsTable.jsx"
 
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()
     const navigate = useNavigate()
+    const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
     const user = useSelector((storeState) => storeState.userModule.loggedinUser)
 
 
     useEffect(() => {
         loadToy()
+        setReviewFilterBy({ toyId })
+        loadReviews()
     }, [toyId])
 
     async function loadToy() {
@@ -48,6 +53,17 @@ export function ToyDetails() {
 
     }
 
+    async function _addReview(txt) {
+        try {
+            await addReview({ toyId, txt, user })
+            loadToy()
+        } catch (error) {
+            console.log('Had issues in toy details', error)
+            showErrorMsg('Cannot add review')
+        }
+    }
+
+
     if (!toy) return <div>Loading...</div>
     return (
         <section className="page toy-details">
@@ -70,8 +86,9 @@ export function ToyDetails() {
             {user && <AddInput onSubmit={_addMsg} type={'Message'} />}
 
             <h3>Toy Reviews</h3>
+            <ReviewsTable reviews={reviews} />
 
-            {/* {user && <AddInput onSubmit={_addMsg} type={'Review'} />} */}
+            {user && <AddInput onSubmit={_addReview} type={'Review'} />}
             <BackArrow onArrowClick={navToIndex} />
         </section>
     )

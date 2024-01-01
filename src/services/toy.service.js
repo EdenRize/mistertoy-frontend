@@ -124,7 +124,7 @@ function _createToys() {
                 labels: ['Doll', 'Battery Powered', 'Baby'],
                 createdAt: 1631031801011,
                 inStock: false,
-                img: 8
+                img: '../../src/assets/img/8.svg'
             },
             {
                 _id: 't102',
@@ -133,7 +133,7 @@ function _createToys() {
                 labels: ['Puzzle', 'Outdoor'],
                 createdAt: 1631031801022,
                 inStock: true,
-                img: 10
+                img: '../../src/assets/img/10.svg'
             },
             {
                 _id: 't103',
@@ -142,7 +142,7 @@ function _createToys() {
                 labels: ['Box game', 'Battery Powered'],
                 createdAt: 1631031801033,
                 inStock: true,
-                img: 7
+                img: '../../src/assets/img/7.svg'
             },
             {
                 _id: 't104',
@@ -151,7 +151,7 @@ function _createToys() {
                 labels: ['On wheels', 'Art'],
                 createdAt: 1631031801044,
                 inStock: false,
-                img: 3
+                img: '../../src/assets/img/3.svg'
             },
             {
                 _id: 't105',
@@ -160,7 +160,7 @@ function _createToys() {
                 labels: ['Outdoor', 'Art'],
                 createdAt: 1631031801055,
                 inStock: true,
-                img: 9
+                img: '../../src/assets/img/9.svg'
             },
             {
                 _id: 't106',
@@ -169,7 +169,7 @@ function _createToys() {
                 labels: ['Puzzle', 'Doll'],
                 createdAt: 1631031801066,
                 inStock: true,
-                img: 4
+                img: '../../src/assets/img/4.svg'
             },
             {
                 _id: 't107',
@@ -178,7 +178,7 @@ function _createToys() {
                 labels: ['Doll', 'Battery Powered'],
                 createdAt: 1631031801077,
                 inStock: true,
-                img: 5
+                img: '../../src/assets/img/5.svg'
             }
         ]
 

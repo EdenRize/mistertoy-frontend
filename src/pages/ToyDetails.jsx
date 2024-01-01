@@ -78,7 +78,7 @@ export function ToyDetails() {
             </ul>
             <p className="toy-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p>
 
-            <img src={`../../src/assets/img/${toy.img}.svg`} className="toy-img" />
+            <img src={toy.img} className="toy-img" />
 
             <h3>Users's messages</h3>
             <MsgsTable msgs={toy.msgs} />

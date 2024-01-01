@@ -1,0 +1,25 @@
+.review-explore {
+
+    & .review-filter {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        margin-block-end: 30px;
+
+        & label {
+            margin-block: 10px;
+
+            & input {
+                margin-inline: 10px;
+            }
+        }
+
+        @include for-mobile-layout {
+            flex-direction: column;
+        }
+    }
+
+    & table {
+        margin: auto;
+    }
+}

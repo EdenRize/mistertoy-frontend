@@ -1,11 +1,9 @@
 .general-table {
     background-color: var(--green);
     color: var(--yellow);
-    border-radius: 10px;
 
     & td {
         padding: 10px;
-        border-radius: 10px;
         border-bottom: 1px solid var(--grey);
     }
 

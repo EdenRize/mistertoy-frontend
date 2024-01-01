@@ -40,7 +40,6 @@ export function toyReducer(state = initialState, action = {}) {
             return { ...state, toys }
 
         case UPDATE_TOY:
-            console.log('state.toys', state.toys)
             toys = state.toys.map(toy => toy._id === action.toy._id ? action.toy : toy)
             return { ...state, toys }
 

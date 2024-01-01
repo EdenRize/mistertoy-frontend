@@ -57,7 +57,6 @@ export function toyReducer(state = initialState, action = {}) {
             return { ...state, toys }
 
         case ADD_MSG:
-            console.log('state.toys', state.toys)
             var toy = state.toys.find(currToy => {
                 return currToy._id === action.data.toyId
             })

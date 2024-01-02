@@ -11,7 +11,7 @@ export function UserDetails() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        setReviewFilterBy({ userId: user._id, toyId: null })
+        if (user) setReviewFilterBy({ userId: user._id, toyId: null })
     }, [])
 
     useEffect(() => {
@@ -32,6 +32,7 @@ export function UserDetails() {
         }
 
     }
+
 
     if (!user) return <div>Loading...</div>
     return (

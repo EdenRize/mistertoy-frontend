@@ -3,12 +3,12 @@
     right: 10px;
     bottom: 10px;
     font-family: 'Edu VIC WA NT Beginner', cursive;
-    color: var(--yellow);
+
+    color: var(--grey);
 
     & h3 {
         position: sticky;
         top: 0;
-        color: var(--grey);
         background-color: var(--white);
         border-bottom: 1px solid var(--grey);
     }
@@ -33,6 +33,7 @@
             margin-block: 5px;
             border-radius: 10px;
             background-color: var(--grey);
+            color: var(--yellow);
 
             & span {
                 font-size: 1.1em;

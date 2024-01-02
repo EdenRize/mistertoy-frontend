@@ -106,8 +106,8 @@
 
             & .menu {
                 display: block;
-                position: absolute;
-                right: -20px;
+                position: fixed;
+                right: 0;
                 overflow-y: auto;
                 margin: -100px 0 0 -50px;
                 padding: 20px;
@@ -134,7 +134,11 @@
             & .menuToggle input:checked~ul {
                 transform: translate(0, 0);
                 overflow: hidden;
+                position: absolute;
+                right: -16px;
             }
+
+
         }
     }
 

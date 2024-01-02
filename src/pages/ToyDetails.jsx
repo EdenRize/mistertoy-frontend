@@ -13,6 +13,7 @@ import { addMsg } from "../store/actions/toy.actions.js"
 import { addReview, loadReviews, removeReview, setReviewFilterBy } from "../store/actions/review.actions.js"
 import { ReviewsTable } from "../cmps/ReviewsTable.jsx"
 import { socketService, SOCKET_EVENT_TOY_UPDATED, SOCKET_EMIT_TOY_WATCH } from '../services/socket.service'
+import { Chat } from "../cmps/Chat.jsx"
 
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
@@ -110,6 +111,8 @@ export function ToyDetails() {
 
             {user && <AddInput onSubmit={_addReview} type={'Review'} />}
             <BackArrow onArrowClick={navToIndex} />
+
+            <Chat topic={toy._id} title={toy.name} />
         </section>
     )
 }

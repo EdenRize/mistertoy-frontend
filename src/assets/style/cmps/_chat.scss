@@ -1,0 +1,62 @@
+.chat {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    color: var(--yellow);
+
+    & .chat-container {
+        position: absolute;
+        right: 10px;
+        bottom: 35px;
+        max-height: 300px;
+        overflow-y: scroll;
+        width: 250px;
+
+        background-color: var(--white);
+        border: 2px solid var(--grey);
+        border-radius: 10px;
+        padding: 20px;
+        padding-bottom: 0;
+
+        & .msg {
+            width: fit-content;
+            text-align: start;
+            padding: 7px;
+            margin-block: 5px;
+            border-radius: 10px;
+            background-color: var(--grey);
+
+            & span {
+                font-size: 1.1em;
+            }
+
+            &.logged-user-msg {
+                background-color: var(--green);
+
+            }
+
+        }
+
+        & form {
+            position: sticky;
+            bottom: 0;
+            background-color: var(--white);
+            border-top: 2px solid var(--grey);
+            padding-bottom: 15px;
+
+            & input {
+                margin-block: 10px;
+            }
+        }
+    }
+
+    & .chat-btn {
+        width: 30px;
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(90%);
+        }
+    }
+}

@@ -38,7 +38,6 @@ export function Chat({ topic, title }) {
         })
         clearTimeout(timeOut.current)
         timeOut.current = setTimeout(() => {
-            console.log('here');
             setTypingUsers(prevUsers => prevUsers.filter(user => user !== userName))
         }, 3000)
     }
@@ -70,7 +69,8 @@ export function Chat({ topic, title }) {
             {isChatOpen && <div className="chat-container">
                 <h3>{title || topic} Chat</h3>
                 <ul className='clean-list'>
-                    {msgs.map((msg, idx) => (<li className={`msg ${msg.from === loggedinUser?.fullname ? 'logged-user-msg' : ''}`} key={idx}><span>{msg.from}:</span> {msg.txt}</li>))}
+                    {!msgs.length && <p>No messages yet</p>}
+                    {!!msgs.length && msgs.map((msg, idx) => (<li className={`msg ${msg.from === loggedinUser?.fullname ? 'logged-user-msg' : ''}`} key={idx}><span>{msg.from}:</span> {msg.txt}</li>))}
                 </ul>
 
                 {!!typingUsers.length && <p className='typing-msg'>

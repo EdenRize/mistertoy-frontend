@@ -12,6 +12,7 @@ import { AddInput } from "../cmps/AddInput.jsx"
 import { addMsg } from "../store/actions/toy.actions.js"
 import { addReview, loadReviews, removeReview, setReviewFilterBy } from "../store/actions/review.actions.js"
 import { ReviewsTable } from "../cmps/ReviewsTable.jsx"
+import { socketService, SOCKET_EVENT_TOY_UPDATED, SOCKET_EMIT_TOY_WATCH } from '../services/socket.service'
 
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
@@ -25,6 +26,14 @@ export function ToyDetails() {
         loadToy()
         setReviewFilterBy({ toyId, userId: null })
         loadReviews()
+
+        // TODO : Emit watch on the user + add a listener for when user changes
+        socketService.emit(SOCKET_EMIT_TOY_WATCH, toyId)
+        socketService.on(SOCKET_EVENT_TOY_UPDATED, (toy) => {
+            setToy(toy)
+        })
+
+        return () => socketService.off(SOCKET_EVENT_TOY_UPDATED)
     }, [toyId])
 
     async function loadToy() {

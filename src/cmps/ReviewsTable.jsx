@@ -20,7 +20,7 @@ export function ReviewsTable({ reviews, fields }) {
                         {fields.username && <td>{review.user.fullname}</td>}
                         {fields.toyname && <td>{review.toy.name}</td>}
                         <td>{review.txt}</td>
-                        {review.user._id === user._id && <td><img src="../assets/img/delete.svg" /></td>}
+                        {(user && review.user._id === user._id) && <td className="delete-td"><img src="/src/assets/img/delete.svg" /></td>}
                     </tr>
                 })}
             </tbody>

@@ -5,6 +5,14 @@
     font-family: 'Edu VIC WA NT Beginner', cursive;
     color: var(--yellow);
 
+    & h3 {
+        position: sticky;
+        top: 0;
+        color: var(--grey);
+        background-color: var(--white);
+        border-bottom: 1px solid var(--grey);
+    }
+
     & .chat-container {
         position: absolute;
         right: 10px;
@@ -16,8 +24,7 @@
         background-color: var(--white);
         border: 2px solid var(--grey);
         border-radius: 10px;
-        padding: 20px;
-        padding-bottom: 0;
+        padding: 0 20px;
 
         & .msg {
             width: fit-content;

@@ -44,6 +44,7 @@ export function Chat({ topic, title }) {
         <section className="chat">
 
             {isChatOpen && <div className="chat-container">
+                <h3>{title || topic} Chat</h3>
                 <ul className='clean-list'>
                     {msgs.map((msg, idx) => (<li className={`msg ${msg.from === loggedinUser?.fullname ? 'logged-user-msg' : ''}`} key={idx}><span>{msg.from}:</span> {msg.txt}</li>))}
                 </ul>

@@ -25,7 +25,6 @@ export async function loadReviews() {
 
 export async function addReview(review) {
   try {
-    delete review.user._id
     delete review.user.isAdmin
     const addedReview = await reviewService.add(review)
     store.dispatch(getActionAddReview({ ...addedReview, user: review.user }))

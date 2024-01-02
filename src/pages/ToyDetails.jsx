@@ -10,7 +10,7 @@ import { MsgsTable } from "../cmps/MsgsTable.jsx"
 import { useSelector } from "react-redux"
 import { AddInput } from "../cmps/AddInput.jsx"
 import { addMsg } from "../store/actions/toy.actions.js"
-import { addReview, loadReviews, setReviewFilterBy } from "../store/actions/review.actions.js"
+import { addReview, loadReviews, removeReview, setReviewFilterBy } from "../store/actions/review.actions.js"
 import { ReviewsTable } from "../cmps/ReviewsTable.jsx"
 
 export function ToyDetails() {
@@ -63,6 +63,17 @@ export function ToyDetails() {
         }
     }
 
+    async function onDeleteReview(reviewId) {
+        try {
+            await removeReview(reviewId)
+            loadToy()
+        } catch (error) {
+            console.log('Had issues in toy details', error)
+            showErrorMsg('Cannot delete review')
+        }
+
+    }
+
 
     if (!toy) return <div>Loading...</div>
     return (
@@ -86,7 +97,7 @@ export function ToyDetails() {
             {user && <AddInput onSubmit={_addMsg} type={'Message'} />}
 
             <h3>Toy Reviews</h3>
-            <ReviewsTable reviews={reviews} fields={{ username: true }} />
+            <ReviewsTable reviews={reviews} fields={{ username: true }} onDelete={onDeleteReview} />
 
             {user && <AddInput onSubmit={_addReview} type={'Review'} />}
             <BackArrow onArrowClick={navToIndex} />

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 
-export function ReviewsTable({ reviews, fields }) {
+export function ReviewsTable({ reviews, fields, onDelete }) {
     const user = useSelector((storeState) => storeState.userModule.loggedinUser)
 
     if (!reviews.length) return <div>No reviews yet</div>
@@ -20,7 +20,7 @@ export function ReviewsTable({ reviews, fields }) {
                         {fields.username && <td>{review.user.fullname}</td>}
                         {fields.toyname && <td>{review.toy.name}</td>}
                         <td>{review.txt}</td>
-                        {(user && review.user._id === user._id) && <td className="delete-td"><img src="/src/assets/img/delete.svg" /></td>}
+                        {(user && (review.user._id === user._id || user.isAdmin)) && <td className="delete-td" onClick={() => onDelete(review._id)}><img src="/src/assets/img/delete.svg" /></td>}
                     </tr>
                 })}
             </tbody>
